@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Shop small, well-designed objects for your everyday rituals.">
+<title>Daymark — Objects for the everyday</title>
+<link rel="stylesheet" href="style.css">
+<script src="shop.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#shop">Skip to shop</a>
+<header class="site-header">
+  <a class="brand" href="#" aria-label="Daymark home"><span aria-hidden="true">✳</span> daymark<span class="period">.</span></a>
+  <nav aria-label="Main navigation"><a href="#shop">Shop</a><a href="#ritual">Ritual Builder</a></nav>
+  <button class="bag" data-action="bag">Bag <span id="bag-count">0</span></button>
+</header>
+<main>
+<section class="hero" aria-labelledby="headline">
+  <div class="hero-copy">
+    <p class="eyebrow"><span aria-hidden="true">✦</span> THE EVERYDAY GOODS SHOP</p>
+    <h1 id="headline">Make it a<br><em>good day.</em></h1>
+    <p>Small, well-designed things for the moments you make your own.</p>
+    <div class="actions"><a class="button primary" href="#shop">Shop the collection</a><a class="button outline" href="#ritual">Build a ritual</a></div>
+  </div>
+  <figure class="hero-photo">
+    <img src="media/hero.jpg" alt="Olive coffee cup, orange journal and amber candle in warm sunlight">
+    <figcaption>THE DAILY COLLECTION</figcaption>
+  </figure>
+</section>
+<section id="ritual" class="ritual" aria-labelledby="ritual-title">
+  <div class="ritual-intro">
+    <p class="eyebrow"><span aria-hidden="true">✳</span> THE RITUAL BUILDER</p>
+    <h2 id="ritual-title">What moment is yours?</h2>
+    <p>Pick a moment to discover three objects that go together.</p>
+    <fieldset id="moments"><legend class="sr">Choose a moment</legend>
+      <label><input type="radio" name="moment" value="morning" checked><span>☀ &nbsp; Morning</span></label>
+      <label><input type="radio" name="moment" value="midday"><span>◐ &nbsp; Midday</span></label>
+      <label><input type="radio" name="moment" value="evening"><span>☾ &nbsp; Evening</span></label>
+    </fieldset>
+  </div>
+  <div class="ritual-result" id="ritual-result" aria-live="polite"></div>
+</section>
+<section id="shop" class="shop" aria-labelledby="shop-title">
+  <p class="eyebrow"><span aria-hidden="true">✦</span> THE COLLECTION</p>
+  <h2 id="shop-title">Good things to keep.</h2>
+  <div class="shop-tools">
+    <div id="filters" aria-label="Filter by category">
+      <button aria-pressed="true" data-filter="All">All goods</button>
+      <button aria-pressed="false" data-filter="Drinkware">Drinkware</button>
+      <button aria-pressed="false" data-filter="Desk">Desk</button>
+      <button aria-pressed="false" data-filter="Home">Home</button>
+    </div>
+    <input type="search" id="search" aria-label="Search products" placeholder="Search products">
+  </div>
+  <p class="sr" id="result-count" aria-live="polite"></p>
+  <div id="products" class="products"></div>
+</section>
+</main>
+<footer><a class="brand" href="#"><span aria-hidden="true">✳</span> daymark<span class="period">.</span></a><span>Concept store · Demo checkout</span><a href="#ritual">Ritual Builder</a></footer>
+<dialog id="overlay" aria-labelledby="dialog-title"><div id="dialog-content"></div></dialog>
+<div id="toast" role="status" aria-atomic="true"></div>
+</body>
+</html>
