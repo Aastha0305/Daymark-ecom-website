@@ -24,6 +24,15 @@ let bag = {};
 let filter = 'All';
 let moment = 'morning';
 let toastTimer;
+const shortlistKey = 'daymark-shortlist-v1';
+let shortlist = new Set();
+
+try {
+  const saved = JSON.parse(localStorage.getItem(shortlistKey));
+  if (Array.isArray(saved)) shortlist = new Set(saved.filter(id => find(id)).slice(0, 3));
+} catch {
+  // A shortlist can still be used for the current visit.
+}
 
 try {
   const saved = JSON.parse(localStorage.getItem(storageKey));
@@ -34,8 +43,8 @@ try {
   // The storefront still works when browser storage is unavailable.
 }
 
-function image(product, className = '') {
-  return `<img class="${className}" src="media/${product.id}.jpg" alt="${product.name}" style="--tint:${product.tint}" width="480" height="480">`;
+function image(product, className = '', alt = product.name) {
+  return `<img class="${className}" src="media/${product.id}.jpg" alt="${alt}" style="--tint:${product.tint}" width="480" height="480">`;
 }
 
 function renderProducts() {
@@ -52,6 +61,7 @@ function renderProducts() {
         <div><button class="product-name" data-action="detail" data-id="${product.id}">${product.name}</button><p>${product.category} · ${money(product.price)}</p></div>
         <button class="icon" data-action="add" data-id="${product.id}" aria-label="Add ${product.name} to bag">+</button>
       </div>
+      <button class="shortlist-button" data-action="shortlist" data-id="${product.id}" aria-label="Shortlist ${product.name}" aria-pressed="${shortlist.has(product.id)}">${shortlist.has(product.id) ? '♥ Shortlisted' : '♡ Shortlist'}</button>
     </article>`).join('') || '<p>No matching products. Try a different search or category.</p>';
 }
 
@@ -152,9 +162,10 @@ document.addEventListener('click', event => {
       else notify(`${product.name} added to your bag`);
       break;
     case 'kit':
-      for (const item of rituals[moment].items) changeQuantity(item, 1);
-      syncBag();
-      showBag();
+      addKit(rituals[moment].items);
+      break;
+    case 'shortlist':
+      toggleShortlist(product, button);
       break;
     case 'plus':
     case 'minus':

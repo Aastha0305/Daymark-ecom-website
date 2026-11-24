@@ -7,12 +7,13 @@
 <title>Daymark — Objects for the everyday</title>
 <link rel="stylesheet" href="style.css">
 <script src="shop.js" defer></script>
+<script src="discover.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#shop">Skip to shop</a>
 <header class="site-header">
   <a class="brand" href="#" aria-label="Daymark home"><span aria-hidden="true">✳</span> daymark<span class="period">.</span></a>
-  <nav aria-label="Main navigation"><a href="#shop">Shop</a><a href="#ritual">Ritual Builder</a></nav>
+  <nav aria-label="Main navigation"><a href="#shop">Shop</a><a href="#ritual">Ritual Builder</a><a href="#finder">Ritual Quiz</a></nav>
   <button class="bag" data-action="bag">Bag <span id="bag-count">0</span></button>
 </header>
 <main>
@@ -41,6 +42,45 @@
   </div>
   <div class="ritual-result" id="ritual-result" aria-live="polite"></div>
 </section>
+<section class="discovery" aria-label="Personalized shopping">
+  <div id="finder" class="discovery-panel finder">
+    <p class="eyebrow"><span aria-hidden="true">✦</span> RITUAL QUIZ</p>
+    <h2>Find your rhythm.</h2>
+    <p>Choose what you want from the moment and what you’d reach for first.</p>
+    <form id="finder-form">
+      <label for="goal">How do you want to feel?</label>
+      <select id="goal" required>
+        <option value="">Choose a feeling</option>
+        <option value="morning">Ready to start</option>
+        <option value="midday">Refocused</option>
+        <option value="evening">Ready to switch off</option>
+      </select>
+      <label for="anchor">What would you reach for first?</label>
+      <select id="anchor" required>
+        <option value="">Choose an object</option>
+        <option value="cup">A warm cup</option>
+        <option value="journal">A fresh page</option>
+        <option value="candle">A soft glow</option>
+        <option value="bottle">A cool sip</option>
+        <option value="pillow">A quiet break</option>
+        <option value="tray">A little incense</option>
+      </select>
+      <button class="button primary" type="submit">Find my ritual</button>
+    </form>
+    <p id="finder-result" class="finder-result" role="status" hidden></p>
+  </div>
+  <div id="custom-kit" class="discovery-panel custom">
+    <p class="eyebrow"><span aria-hidden="true">✳</span> MIX YOUR OWN KIT</p>
+    <h2>Make it yours.</h2>
+    <p>Pick exactly three objects. Set a budget to see how much room you have for swaps.</p>
+    <div class="budget-field"><label for="kit-budget">Budget</label><select id="kit-budget">
+      <option value="2000">₹2,000</option><option value="2500" selected>₹2,500</option><option value="3000">₹3,000</option><option value="3500">₹3,500</option>
+    </select></div>
+    <fieldset id="kit-options"><legend class="sr">Choose products</legend></fieldset>
+    <div class="kit-meter"><progress id="budget-meter" aria-label="Budget used" max="2500" value="0"></progress><p id="budget-summary" role="status"></p></div>
+    <button class="button primary" id="add-custom" type="button" disabled>Add custom kit</button>
+  </div>
+</section>
 <section id="shop" class="shop" aria-labelledby="shop-title">
   <p class="eyebrow"><span aria-hidden="true">✦</span> THE COLLECTION</p>
   <h2 id="shop-title">Good things to keep.</h2>
@@ -52,6 +92,10 @@
       <button aria-pressed="false" data-filter="Home">Home</button>
     </div>
     <input type="search" id="search" aria-label="Search products" placeholder="Search products">
+  </div>
+  <div class="compare-bar" aria-label="Product shortlist">
+    <div><strong>Product shortlist</strong><p id="compare-summary" role="status">Shortlist up to three products to compare them.</p></div>
+    <div class="compare-actions"><button class="button outline" id="clear-shortlist" type="button" hidden>Clear</button><button class="button primary" id="compare-products" type="button" disabled>Compare products</button></div>
   </div>
   <p class="sr" id="result-count" aria-live="polite"></p>
   <div id="products" class="products"></div>

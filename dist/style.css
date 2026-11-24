@@ -39,3 +39,33 @@ dialog{color:var(--ink);background:var(--paper);border:1px solid var(--ink);bord
 @media(max-width:800px){.hero{grid-template-columns:1fr}.hero-photo{min-height:0;aspect-ratio:1.55}.ritual{grid-template-columns:1fr}.products{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.site-header{height:62px}.brand{font-size:26px}nav{gap:10px;font-size:13px}.bag{padding:7px 9px}.hero-copy{padding-block:38px}h1{font-size:clamp(62px,16vw,77px)}.shop-tools{align-items:flex-start;flex-direction:column}.shop-tools input{width:100%}.kit-bottom{align-items:flex-start;flex-direction:column}.products{gap:20px 10px}.product-info .icon{width:36px;height:36px;flex-basis:36px}footer{flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+.discovery{display:grid;grid-template-columns:.85fr 1.15fr;align-items:start;gap:20px;padding:46px var(--pad);border-bottom:1px solid var(--ink);background:#f5efe1}
+.discovery-panel{border:1px solid var(--ink);border-radius:20px;padding:clamp(18px,3vw,36px);min-width:0}
+.finder{background:#f5b89e}.custom{background:#fcfaf2}
+.discovery h2{font-size:clamp(38px,4.3vw,65px)}
+#finder-form{display:grid;gap:7px;margin-top:18px}
+#finder-form label,.budget-field label{font-weight:700;font-size:14px}
+#finder-form label:not(:first-child){margin-top:6px}
+.discovery select{appearance:none;width:100%;min-height:44px;font:inherit;color:var(--ink);border:1px solid var(--ink);border-radius:12px;padding:9px 34px 9px 12px;background:linear-gradient(45deg,transparent 50%,var(--ink) 50%) right 16px center/5px 5px no-repeat,linear-gradient(135deg,var(--ink) 50%,transparent 50%) right 11px center/5px 5px no-repeat,var(--paper)}
+#finder-form button{justify-self:start;margin-top:8px}
+.finder-result{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}.finder-result a{text-decoration:underline;font-weight:700;display:inline-block}
+.budget-field{display:flex;align-items:center;gap:12px;margin:14px 0}.budget-field select{max-width:135px}
+#kit-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:0}
+.kit-choice{display:grid;grid-template-columns:auto 37px 1fr;align-items:center;gap:7px;border:1px solid var(--line);border-radius:10px;padding:6px;cursor:pointer;font-size:14px;line-height:1.2}
+.kit-choice input{margin:0;accent-color:var(--ink);width:17px;height:17px}
+.kit-choice img{border-radius:5px;aspect-ratio:1;height:auto}
+.kit-choice small{display:block;color:#545449;margin-top:3px}
+.kit-choice:has(input:checked){background:#e8edaf;border-color:var(--ink)}
+.kit-choice:has(input:disabled){opacity:.55;cursor:default}
+.kit-meter{margin:14px 0;font-size:14px}
+.kit-meter progress{display:block;width:100%;height:10px;margin-bottom:6px;accent-color:#59642d}.kit-meter .over-budget{accent-color:#b3310e}
+.compare-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;background:#e9e0f1;border:1px solid var(--ink);border-radius:16px;padding:14px;margin-bottom:20px}
+.compare-bar p{font-size:14px}.compare-actions{display:flex;flex-wrap:wrap;gap:6px}
+button[hidden]{display:none}
+.shortlist-button{border:0;background:transparent;padding:3px 1px;min-height:40px;font-size:14px;font-weight:700}.shortlist-button:hover{text-decoration:underline}.shortlist-button[aria-pressed=true]{color:#a93216}
+dialog.wide:not(.drawer){width:min(94vw,770px)}
+.comparison-scroll{overflow:auto}
+.comparison{width:100%;border-collapse:collapse;text-align:left;font-size:14px}.comparison th,.comparison td{border-bottom:1px solid var(--line);padding:10px;vertical-align:top}.comparison thead th{min-width:130px}.comparison img{aspect-ratio:1.5;height:auto;border-radius:8px;margin-bottom:8px}.comparison tbody th{white-space:nowrap}.comparison button{white-space:nowrap}
+@media(max-width:800px){.discovery{grid-template-columns:1fr}}
+@media(max-width:480px){.site-header nav a[href="#finder"]{display:none}.compare-bar{align-items:flex-start;flex-direction:column}.kit-choice{grid-template-columns:auto 1fr}.kit-choice img{display:none}}
